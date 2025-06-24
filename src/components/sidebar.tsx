@@ -55,7 +55,7 @@ export const Sidebar: React.FC = () => {
       {showButton && (
         <div
           ref={menuButtonRef}
-          className="m-2 cursor-pointer absolute shadow-[0_0_5px] shadow-white/30 p-2 rounded-md bg-black"
+          className="m-2 cursor-pointer fixed shadow-[0_0_5px] shadow-white/30 p-2 rounded-md bg-black"
           onClick={() => setIsOpen(true)}
         >
           <Menu color="white" />
@@ -65,7 +65,7 @@ export const Sidebar: React.FC = () => {
       {showSidebar && (
         <div
           ref={sidebarRef}
-          className="text-white shadow-[0_0_5px] shadow-white/30 m-2 rounded-md absolute bg-black py-2 px-4 w-[300px]"
+          className="text-white shadow-[0_0_5px] shadow-white/30 m-2 rounded-md fixed bg-black py-2 px-4 w-[300px]"
         >
           <div className="flex justify-between items-center">
             <h1 className="text-lg font-extrabold text-center">Mis finanzas</h1>

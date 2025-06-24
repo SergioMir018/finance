@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { MoveUp } from "lucide-react";
+import { MoveUp, TrendingUp } from "lucide-react";
 
 interface BalanceContentProps {
   title: string;
@@ -29,7 +29,7 @@ export const BalanceContent: React.FC<BalanceContentProps> = ({
       {isBalanceCard ? (
         <div className="flex flex-col">
           <div className="flex items-center gap-1 text-[#3bc369]">
-            <MoveUp size={14} />
+            <TrendingUp size={18} />
             <p>+ 2,5%</p>
           </div>
           <span className="text-sm text-gray-400">desde el mes pasado</span>

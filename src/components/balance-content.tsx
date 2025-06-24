@@ -1,21 +1,21 @@
-import { MoveUp } from "lucide-react";
 import React, { ReactNode } from "react";
+import { MoveUp } from "lucide-react";
 
-interface OverviewBalanceCardProps {
+interface BalanceContentProps {
   title: string;
   icon: ReactNode;
   textColor?: string;
   isBalanceCard?: boolean;
 }
 
-export const OverviewBalanceCard: React.FC<OverviewBalanceCardProps> = ({
+export const BalanceContent: React.FC<BalanceContentProps> = ({
   title,
   icon,
-  textColor = "white",
-  isBalanceCard = false,
+  textColor,
+  isBalanceCard,
 }) => {
   return (
-    <div className="border-2 border-white/20 rounded-md h-[160px] px-6 py-5 shadow-[0_0_2px] shadow-white/30">
+    <>
       <div className="flex justify-between items-center">
         <h2 className="font-semibold text-sm">{title}</h2>
         {icon}
@@ -32,11 +32,11 @@ export const OverviewBalanceCard: React.FC<OverviewBalanceCardProps> = ({
             <MoveUp size={14} />
             <p>+ 2,5%</p>
           </div>
-          <span className="text-sm text-white/80">desde el mes pasado</span>
+          <span className="text-sm text-gray-400">desde el mes pasado</span>
         </div>
       ) : (
-        <span className="text-sm text-white/80">Este mes</span>
+        <span className="text-sm text-gray-400">Este mes</span>
       )}
-    </div>
+    </>
   );
 };

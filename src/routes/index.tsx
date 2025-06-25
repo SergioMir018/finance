@@ -12,10 +12,10 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div className="text-white">
-      <h1 className="text-center font-bold text-2xl py-3">
+      <h1 className="font-bold text-3xl pt-4 pb-10">
         Resumen financiero
       </h1>
-      <section className="flex-1 grid grid-cols-12 gap-x-4 gap-y-12">
+      <section className="flex-1 grid grid-cols-12 gap-x-4 gap-y-8">
         <Card className="col-span-3 px-6 py-5">
           <BalanceContent
             title="Balance total"
@@ -44,6 +44,12 @@ function Home() {
             textColor="#3bc369"
           />
         </Card>
+        <ChartAreaGradient />
+        <ChartPieLabel />
+
+        <ChartAreaGradient />
+        <ChartPieLabel />
+
         <ChartAreaGradient />
         <ChartPieLabel />
       </section>

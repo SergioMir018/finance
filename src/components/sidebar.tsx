@@ -1,74 +1,70 @@
 import { Ellipsis } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { SetStateAction, useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { useLocalStorage } from "~/hooks/useLocalStorage";
 
 export const Sidebar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useLocalStorage("isSidebarOpen", true);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const iconRef = useRef<SVGSVGElement>(null);
-  const isMounted = useRef(false);
 
   useEffect(() => {
-    if (isMounted.current) {
-      if (!sidebarRef.current || !titleRef.current || !iconRef.current) return;
+    if (!sidebarRef.current || !titleRef.current || !iconRef.current) return;
 
-      const sidebar = sidebarRef.current;
-      const title = titleRef.current;
-      const icon = iconRef.current;
+    const sidebar = sidebarRef.current;
+    const title = titleRef.current;
+    const icon = iconRef.current;
 
-      const tl = gsap.timeline({ defaults: { ease: "power.inOut" } });
+    const tl = gsap.timeline({ defaults: { ease: "power.inOut" } });
 
-      if (!isOpen) {
-        tl.to(title, {
-          autoAlpha: 0,
-          duration: 0.2,
-          onComplete: () => {
-            title.style.display = "none";
+    if (!isOpen) {
+      tl.to(title, {
+        autoAlpha: 0,
+        duration: 0.2,
+        onComplete: () => {
+          title.style.display = "none";
+        },
+      })
+        .to(
+          sidebar,
+          {
+            width: "72px",
+            duration: 0.5,
           },
-        })
-          .to(
-            sidebar,
-            {
-              width: "72px",
-              duration: 0.5,
-            },
-            "<"
-          )
-          .to(
-            icon,
-            {
-              rotate: 90,
-              duration: 0.3,
-            },
-            "<"
-          );
-      } else {
-        title.style.display = "block";
-        title.style.opacity = "0";
-        tl.to(sidebar, {
-          width: "300px",
-          duration: 0.5,
-        })
-          .to(
-            icon,
-            {
-              rotate: 0,
-              duration: 0.3,
-            },
-            "<"
-          )
-          .to(
-            title,
-            {
-              autoAlpha: 1,
-              duration: 0.2,
-            },
-            "-=0.2"
-          );
-      }
+          "<"
+        )
+        .to(
+          icon,
+          {
+            rotate: 90,
+            duration: 0.3,
+          },
+          "<"
+        );
     } else {
-      isMounted.current = true;
+      title.style.display = "block";
+      title.style.opacity = "0";
+      tl.to(sidebar, {
+        width: "300px",
+        duration: 0.5,
+      })
+        .to(
+          icon,
+          {
+            rotate: 0,
+            duration: 0.3,
+          },
+          "<"
+        )
+        .to(
+          title,
+          {
+            autoAlpha: 1,
+            duration: 0.2,
+          },
+          "-=0.2"
+        );
     }
   }, [isOpen]);
 

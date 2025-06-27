@@ -98,7 +98,7 @@ export const Sidebar: React.FC = () => {
     <aside
       ref={sidebarRef}
       style={{ willChange: "width" }}
-      className="h-screen sticky top-0 bg-card text-white px-4 py-5 overflow-hidden"
+      className="w-[300px] h-screen sticky top-0 bg-card text-white px-4 py-5 overflow-hidden"
     >
       <div className="flex h-[28px] items-center relative">
         <h1

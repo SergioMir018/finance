@@ -11,10 +11,8 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div className="text-white">
-      <h1 className="font-bold text-3xl pt-4 pb-10">
-        Resumen financiero
-      </h1>
+    <>
+      <h1 className="font-bold text-3xl pt-4 pb-10">Resumen financiero</h1>
       <section className="flex-1 grid grid-cols-12 gap-x-4 gap-y-8">
         <Card className="col-span-3 px-6 py-5">
           <BalanceContent
@@ -53,6 +51,6 @@ function Home() {
         <ChartAreaGradient />
         <ChartPieLabel />
       </section>
-    </div>
+    </>
   );
 }

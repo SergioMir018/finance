@@ -44,12 +44,6 @@ function Home() {
         </Card>
         <ChartAreaGradient />
         <ChartPieLabel />
-
-        <ChartAreaGradient />
-        <ChartPieLabel />
-
-        <ChartAreaGradient />
-        <ChartPieLabel />
       </section>
     </>
   );

@@ -7,7 +7,7 @@ interface BalanceCardContentProps extends React.HTMLAttributes<HTMLDivElement> {
   amount: number;
   changePercent?: number;
   changeLabel?: string;
-  periodLabel?: string;
+  subtext?: string;
   variant: CardVariant;
 }
 
@@ -19,7 +19,7 @@ export const BalanceCardContent = React.forwardRef<
     amount,
     changePercent,
     changeLabel = "desde el mes pasado",
-    periodLabel = "Este mes",
+    subtext = "Este mes",
     variant,
     ...props
   }, ref) => {
@@ -75,7 +75,7 @@ export const BalanceCardContent = React.forwardRef<
             <span className="text-sm text-gray-400">{changeLabel}</span>
           </div>
         ) : (
-          <span className="text-sm text-gray-400">{periodLabel}</span>
+          <span className="text-sm text-gray-400">{subtext}</span>
         )}
       </div>
     );

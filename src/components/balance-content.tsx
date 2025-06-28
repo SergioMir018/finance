@@ -21,8 +21,8 @@ export const BalanceContent: React.FC<BalanceContentProps> = ({
         {icon}
       </div>
       <h1
-        className={`mt-2 mb-1 text-3xl font-bold`}
-        style={{ color: textColor }}
+        className={`mt-2 mb-1 text-3xl font-bold ${textColor}`}
+        style={{ color: textColor } as React.CSSProperties}
       >
         $21, 000
       </h1>

@@ -1,13 +1,50 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Card } from "~/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
 import { ArrowDown, DollarSign, PiggyBank, TrendingUp } from "lucide-react";
 import { BalanceContent } from "~/components/balance-content";
 import { ChartAreaGradient } from "~/components/chart-area-gradient";
 import { ChartPieLabel } from "~/components/chart-pie";
+import { Transaction } from "~/lib/types";
+import { D } from "node_modules/@tanstack/react-query-devtools/build/modern/ReactQueryDevtools-Cn7cKi7o";
+import { DashboardTable } from "~/components/dashboard-table";
 
 export const Route = createFileRoute("/")({
   component: Home,
 });
+
+const transactions: Array<Transaction> = [
+  {
+    description: "Venta de producto",
+    category: "Ingresos",
+    amount: 250.0,
+  },
+  {
+    description: "Compra de insumos",
+    category: "Gastos",
+    amount: -150.0,
+  },
+  {
+    description: "Servicio de consultoría",
+    category: "Ingresos",
+    amount: 350.0,
+  },
+  {
+    description: "Compra de insumos",
+    category: "Gastos",
+    amount: -150.0,
+  },
+  {
+    description: "Servicio de consultoría",
+    category: "Ingresos",
+    amount: 350.0,
+  },
+];
 
 function Home() {
   return (
@@ -25,25 +62,34 @@ function Home() {
           <BalanceContent
             title="Ingresos"
             icon={<TrendingUp size={18} />}
-            textColor="#3bc369"
+            textColor="hsl(var(--income))"
           />
         </Card>
         <Card className="col-span-3 px-6 py-5">
           <BalanceContent
             title="Gastos"
             icon={<ArrowDown size={18} />}
-            textColor="#db4b33"
+            textColor="hsl(var(--expense))"
           />
         </Card>
         <Card className="col-span-3 px-6 py-5">
           <BalanceContent
             title="Ahorros"
             icon={<PiggyBank size={18} />}
-            textColor="#3bc369"
+            textColor="hsl(var(--saving))"
           />
         </Card>
         <ChartAreaGradient />
         <ChartPieLabel />
+        <Card className="col-span-12">
+          <CardHeader>
+            <CardTitle>Transacciones Recientes</CardTitle>
+            <CardDescription>Tus últimas 5 transacciones</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DashboardTable transactions={transactions} />
+          </CardContent>
+        </Card>
       </section>
     </>
   );

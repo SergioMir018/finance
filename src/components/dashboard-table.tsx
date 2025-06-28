@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Transaction } from "~/lib/types";
+import { Transaction } from "~/types/transactionTypes/transaction.type";
 import {
   TableCaption,
   TableHeader,

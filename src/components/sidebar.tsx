@@ -119,11 +119,12 @@ export const Sidebar: React.FC = () => {
           return (
             <SidebarLink
               key={index}
-              text={item.text}
               icon={item.icon}
               href={item.href}
               isSidebarOpen={isOpen}
-            />
+            >
+              {item.text}
+            </SidebarLink>
           );
         })}
       </ul>

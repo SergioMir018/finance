@@ -53,12 +53,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
-        <main className="flex h-screen overflow-hidden">
-          <Sidebar />
-          <div className="flex-1 h-screen text-white overflow-y-auto px-5 py-5">
-            {children}
-          </div>
+      <body className="flex h-screen overflow-hidden">
+        <Sidebar />
+        <main className="flex-1 h-screen text-white overflow-y-auto px-5 py-5">
+          {children}
         </main>
         <TanStackRouterDevtools position="bottom-right" />
         <ReactQueryDevtools buttonPosition="bottom-left" />

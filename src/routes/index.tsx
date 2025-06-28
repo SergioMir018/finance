@@ -7,12 +7,12 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { ArrowDown, DollarSign, PiggyBank, TrendingUp } from "lucide-react";
-import { BalanceContent } from "~/components/balance-content";
+import { BalanceCardContent } from "~/components/balance-card-content";
 import { ChartAreaGradient } from "~/components/chart-area-gradient";
 import { ChartPieLabel } from "~/components/chart-pie";
-import { Transaction } from "~/lib/types";
-import { D } from "node_modules/@tanstack/react-query-devtools/build/modern/ReactQueryDevtools-Cn7cKi7o";
+import { Transaction } from "~/types/transactionTypes/transaction.type";
 import { DashboardTable } from "~/components/dashboard-table";
+import { PageHeader } from "~/components/page-header";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -49,35 +49,47 @@ const transactions: Array<Transaction> = [
 function Home() {
   return (
     <>
-      <h1 className="font-bold text-3xl pt-4 pb-10">Resumen financiero</h1>
+      <PageHeader>Resumen financiero</PageHeader>
       <section className="flex-1 grid grid-cols-12 gap-x-4 gap-y-8">
-        <Card className="col-span-3 px-6 py-5">
-          <BalanceContent
-            title="Balance total"
-            icon={<DollarSign size={18} />}
-            isBalanceCard={true}
-          />
+        <Card className="col-span-3">
+          <CardHeader className="flex-row items-center justify-between">
+            <CardTitle>Balance total</CardTitle>
+            <DollarSign size={18} />
+          </CardHeader>
+          <CardContent>
+            <BalanceCardContent
+              amount={1000}
+              changePercent={5}
+              variant="balance"
+            />
+          </CardContent>
         </Card>
-        <Card className="col-span-3 px-6 py-5">
-          <BalanceContent
-            title="Ingresos"
-            icon={<TrendingUp size={18} />}
-            textColor="hsl(var(--income))"
-          />
+        <Card className="col-span-3">
+          <CardHeader className="flex-row items-center justify-between">
+            <CardTitle>Ingresos</CardTitle>
+            <TrendingUp size={18} />
+          </CardHeader>
+          <CardContent>
+            <BalanceCardContent amount={5000} variant="income" />
+          </CardContent>
         </Card>
-        <Card className="col-span-3 px-6 py-5">
-          <BalanceContent
-            title="Gastos"
-            icon={<ArrowDown size={18} />}
-            textColor="hsl(var(--expense))"
-          />
+        <Card className="col-span-3">
+          <CardHeader className="flex-row items-center justify-between">
+            <CardTitle>Gastos</CardTitle>
+            <ArrowDown size={18} />
+          </CardHeader>
+          <CardContent>
+            <BalanceCardContent amount={3000} variant="expense" />
+          </CardContent>
         </Card>
-        <Card className="col-span-3 px-6 py-5">
-          <BalanceContent
-            title="Ahorros"
-            icon={<PiggyBank size={18} />}
-            textColor="hsl(var(--saving))"
-          />
+        <Card className="col-span-3">
+          <CardHeader className="flex-row items-center justify-between">
+            <CardTitle>Ahorros</CardTitle>
+            <PiggyBank size={18} />
+          </CardHeader>
+          <CardContent>
+            <BalanceCardContent amount={2000} variant="saving" />
+          </CardContent>
         </Card>
         <ChartAreaGradient />
         <ChartPieLabel />

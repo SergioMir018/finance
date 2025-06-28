@@ -45,7 +45,7 @@ export const Sidebar: React.FC = () => {
     if (!isOpen) {
       tl.to(title, {
         autoAlpha: 0,
-        duration: 0.2,
+        duration: 0.05,
         onComplete: () => {
           title.style.display = "none";
         },
@@ -54,7 +54,7 @@ export const Sidebar: React.FC = () => {
           sidebar,
           {
             width: "72px",
-            duration: 0.5,
+            duration: 0.1,
             ease: "none",
           },
           "<"
@@ -63,7 +63,7 @@ export const Sidebar: React.FC = () => {
           icon,
           {
             rotate: 90,
-            duration: 0.5,
+            duration: 0.1,
           },
           "<"
         );
@@ -72,14 +72,14 @@ export const Sidebar: React.FC = () => {
       title.style.opacity = "0";
       tl.to(sidebar, {
         width: "300px",
-        duration: 0.5,
+        duration: 0.2,
         ease: "none",
       })
         .to(
           icon,
           {
             rotate: 0,
-            duration: 0.5,
+            duration: 0.1,
           },
           "<"
         )
@@ -87,7 +87,7 @@ export const Sidebar: React.FC = () => {
           title,
           {
             autoAlpha: 1,
-            duration: 0.5,
+            duration: 0.1,
           },
           "-=0.2"
         );

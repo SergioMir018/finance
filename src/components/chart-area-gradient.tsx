@@ -1,4 +1,4 @@
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
+import { Area, AreaChart, CartesianGrid, Line, XAxis } from "recharts";
 
 import {
   Card,
@@ -16,23 +16,32 @@ import {
 
 export const description = "An area chart with gradient fill";
 
-const chartData = [
-  { month: "Enero", desktop: 186, mobile: 80 },
-  { month: "Febrero", desktop: 305, mobile: 200 },
-  { month: "Marzo", desktop: 237, mobile: 120 },
-  { month: "Abril", desktop: 73, mobile: 190 },
-  { month: "Mayo", desktop: 209, mobile: 130 },
-  { month: "Junio", desktop: 214, mobile: 140 },
+const rawData = [
+  { month: "Enero", income: 186, expenses: 80 },
+  { month: "Febrero", income: 305, expenses: 200 },
+  { month: "Marzo", income: 237, expenses: 120 },
+  { month: "Abril", income: 73, expenses: 190 },
+  { month: "Mayo", income: 209, expenses: 130 },
+  { month: "Junio", income: 214, expenses: 140 },
 ];
 
+const chartData = rawData.map((item) => ({
+  ...item,
+  balance: item.income - item.expenses,
+}));
+
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "hsl(var(--chart-1))",
-  },
-  mobile: {
-    label: "Mobile",
+  income: {
+    label: "Ingresos",
     color: "hsl(var(--chart-2))",
+  },
+  expenses: {
+    label: "Gastos",
+    color: "hsl(var(--chart-6))",
+  },
+  balance: {
+    label: "Ingreso neto",
+    color: "hsl(var(--chart-5))",
   },
 } satisfies ChartConfig;
 
@@ -63,48 +72,53 @@ export function ChartAreaGradient() {
               tickMargin={8}
               tickFormatter={(value) => String(value).slice(0, 3)}
             />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+            <ChartTooltip cursor={true} content={<ChartTooltipContent />} />
             <defs>
-              <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="fillIncome" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="var(--color-desktop)"
+                  stopColor="var(--color-income)"
                   stopOpacity={0.8}
                 />
                 <stop
                   offset="95%"
-                  stopColor="var(--color-desktop)"
+                  stopColor="var(--color-income)"
                   stopOpacity={0.1}
                 />
               </linearGradient>
-              <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="fillExpenses" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="var(--color-mobile)"
+                  stopColor="var(--color-expenses)"
                   stopOpacity={0.8}
                 />
                 <stop
                   offset="95%"
-                  stopColor="var(--color-mobile)"
+                  stopColor="var(--color-expenses)"
                   stopOpacity={0.1}
                 />
               </linearGradient>
             </defs>
             <Area
-              dataKey="mobile"
+              dataKey="expenses"
               type="natural"
-              fill="url(#fillMobile)"
+              fill="url(#fillExpenses)"
               fillOpacity={0.4}
-              stroke="var(--color-mobile)"
-              stackId="a"
+              stroke="var(--color-expenses)"
             />
             <Area
-              dataKey="desktop"
+              dataKey="income"
               type="natural"
-              fill="url(#fillDesktop)"
+              fill="url(#fillIncome)"
               fillOpacity={0.4}
-              stroke="var(--color-desktop)"
-              stackId="a"
+              stroke="var(--color-income)"
+            />
+            <Line
+              dataKey="balance"
+              stroke="hsl(var(--saving))"
+              strokeWidth={2}
+              dot={{ r: 3 }}
+              type="monotone"
             />
           </AreaChart>
         </ChartContainer>

@@ -29,17 +29,16 @@ export const SidebarLink: React.FC<SidebarLinkProps> = ({
     if (!isSidebarOpen) {
       tl.to(linkText, {
         autoAlpha: 0,
-        duration: 0.2,
+        duration: 0.1,
         onComplete: () => {
           linkText.style.display = "none";
         },
       });
     } else {
       linkText.style.display = "block";
-      linkText.style.opacity = "0";
       tl.to(linkText, {
         autoAlpha: 1,
-        duration: 0.2,
+        duration: 0.1,
       });
     }
   }, [isSidebarOpen]);
@@ -54,7 +53,7 @@ export const SidebarLink: React.FC<SidebarLinkProps> = ({
     >
       <div
         className={cn(
-          "h-10 min-w-10 bg-transparent border-1 border-transparent shadow-none transition-all duration-100 rounded-[8px] flex justify-center items-center",
+          "h-10 min-w-10 bg-transparent border border-transparent shadow-none transition-all duration-100 rounded-[8px] flex justify-center items-center",
           !isSidebarOpen &&
             "bg-black hover:shadow-md hover:shadow-neutral-100/5 hover:bg-gradient-to-b from-neutral-950 to-black border-[1px] border-white/10 hover:border-white/20"
         )}

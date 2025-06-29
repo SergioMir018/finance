@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { useLocalStorage } from "~/hooks/useLocalStorage";
+import { useLocalStorage } from "~/hooks/use-localStorage";
 import { SidebarLink } from "./sidebar-link";
 
 const links: { text: string; icon: React.ReactNode; href: string }[] = [

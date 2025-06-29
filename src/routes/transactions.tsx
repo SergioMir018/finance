@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { BalanceCardContent } from "~/components/balance-card-content";
 import { Button } from "~/components/button";
+import { DatePicker } from "~/components/date-picker";
 import { Dropdown } from "~/components/dropdown";
 import { Label } from "~/components/label";
 import { PageHeader } from "~/components/page-header";
@@ -91,25 +92,25 @@ function RouteComponent() {
           <CardHeader>
             <CardTitle>Filtros</CardTitle>
           </CardHeader>
-          <CardContent className="grid grid-cols-5">
-            <div className="col-span-1 flex flex-col gap-2 pr-5">
+          <CardContent className="grid grid-cols-[minmax(320px,1fr)_minmax(320px,1fr)_minmax(210px,0.5fr)_minmax(210px,0.5fr)] gap-4 w-fit">
+            <div className="flex flex-col gap-2">
               <Label>Categoría</Label>
               <Dropdown
                 data={sample_categories}
                 icon={<ChevronDown size={18} />}
               />
             </div>
-            <div className="col-span-1 flex flex-col gap-2 pr-5">
-              <Label>Categoría</Label>
+            <div className="flex flex-col gap-2">
+              <Label>Tipo</Label>
               <Dropdown data={sample_types} icon={<ChevronDown size={18} />} />
             </div>
-            <div className="col-span-1 flex flex-col gap-2 pr-5">
-              <Label>Categoría</Label>
-              <Dropdown data={sample_types} icon={<ChevronDown size={18} />} />
+            <div className="flex flex-col gap-2">
+              <Label>Fecha Desde</Label>
+              <DatePicker />
             </div>
-            <div className="col-span-1 flex flex-col gap-2 pr-5">
-              <Label>Categoría</Label>
-              <Dropdown data={sample_types} icon={<ChevronDown size={18} />} />
+            <div className="flex flex-col gap-2">
+              <Label>Fecha Hasta</Label>
+              <DatePicker />
             </div>
           </CardContent>
         </Card>

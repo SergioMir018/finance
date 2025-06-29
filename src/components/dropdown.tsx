@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { cn } from "~/lib/utils";
 import { gsap } from "gsap";
 import { Card } from "./ui/card";
+import { useCloseOnOutsideClick } from "~/hooks/use-close-on-outside-click";
 
 interface DropdownProps extends React.HTMLAttributes<HTMLDivElement> {
   icon: React.ReactNode;
@@ -14,6 +15,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
     const [selectedOption, setSelectedOption] = useState(data[0]);
     const iconRef = React.useRef<HTMLSpanElement>(null);
     const optionsRef = React.useRef<HTMLDivElement>(null);
+    const containerRef = React.useRef<HTMLDivElement>(null);
 
     const rotateDropdownIcon = () => {
       if (iconRef.current) {
@@ -57,8 +59,10 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
       rotateDropdownIcon();
     };
 
+    useCloseOnOutsideClick(isOpen, containerRef, closeOptions);
+
     return (
-      <div className="relative z-10">
+      <div ref={containerRef} className="relative z-10">
         <div
           ref={ref}
           className={cn(

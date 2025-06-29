@@ -53,7 +53,10 @@ export default {
     				'5': 'hsl(var(--chart-5))',
     				'6': 'hsl(var(--chart-6))'
     			}
-    		}
+    		},
+				fontFamily: {
+        	sans: ['var(--font-sans)']
+				}
     	}
     }
 }

@@ -42,9 +42,9 @@ function buildCalendar(
 }
 
 function formatDate(d: Date): string {
-  return `${String(d.getDate()).padStart(2, "0")}/${String(
+  return `${String(d.getDate()).padStart(2, "0")} - ${String(
     d.getMonth() + 1
-  ).padStart(2, "0")}/${d.getFullYear()}`;
+  ).padStart(2, "0")} - ${d.getFullYear()}`;
 }
 
 export const DatePicker = React.forwardRef<
@@ -105,7 +105,7 @@ export const DatePicker = React.forwardRef<
       <div
         ref={ref}
         onClick={isOpen ? handleClose : handleOpen}
-        className="bg-card-highlight cursor-pointer border border-white/10 p-2 rounded-sm flex items-center justify-between"
+        className="bg-card-highlight cursor-pointer border border-white/10 p-2 rounded-sm flex items-center gap-2"
       >
         <Calendar />
         <span className={cn(!selected && "text-white/80")}>
@@ -177,7 +177,8 @@ export const DatePicker = React.forwardRef<
                         isSelected && isCurrent,
                       "border border-white/20":
                         isToday && !isSelected && isCurrent,
-                      "hover:bg-card-highlight text-white": !isSelected && isCurrent,
+                      "hover:bg-card-highlight text-white":
+                        !isSelected && isCurrent,
                       "text-white/50 cursor-default": !isCurrent,
                     }
                   )}

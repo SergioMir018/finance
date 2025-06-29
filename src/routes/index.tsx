@@ -12,7 +12,7 @@ import { ChartAreaGradient } from "~/components/chart-area-gradient";
 import { ChartPieLabel } from "~/components/chart-pie";
 import { Transaction } from "~/types/transactionTypes/transaction.type";
 import { DashboardTable } from "~/components/dashboard-table";
-import { PageHeader } from "~/components/page-header";
+import { PageHeaderTitle } from "~/components/page-header-title";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -49,7 +49,7 @@ const transactions: Array<Transaction> = [
 function Home() {
   return (
     <>
-      <PageHeader>Resumen financiero</PageHeader>
+      <PageHeaderTitle>Resumen financiero</PageHeaderTitle>
       <section className="flex-1 grid grid-cols-12 gap-x-4 gap-y-8">
         <Card className="col-span-3">
           <CardHeader className="flex-row items-center justify-between">

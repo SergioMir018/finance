@@ -52,6 +52,7 @@ export const SidebarLink = React.forwardRef<
         isBasePath && "text-white"
       )}
       {...props}
+      ref={ref}
     >
       <div
         className={cn(

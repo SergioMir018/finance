@@ -2,19 +2,10 @@ import React from "react";
 import { cn } from "~/lib/utils";
 
 export const PageHeader = React.forwardRef<
-  HTMLHeadingElement,
-  React.HTMLAttributes<HTMLHeadingElement>
+  HTMLHeadElement,
+  React.HTMLAttributes<HTMLHeadElement>
 >(({ className, ...props }, ref) => {
   return (
-    <h1
-      ref={ref}
-      className={cn(
-        "font-bold text-3xl pt-4 pb-10 leading-none tracking-tight",
-        className
-      )}
-      {...props}
-    />
+    <header className={cn("flex pt-4 pb-10", className)} {...props} ref={ref} />
   );
 });
-
-PageHeader.displayName = "PageHeader";

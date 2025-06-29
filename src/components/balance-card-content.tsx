@@ -15,14 +15,17 @@ export const BalanceCardContent = React.forwardRef<
   HTMLDivElement,
   BalanceCardContentProps
 >(
-  ({
-    amount,
-    changePercent,
-    changeLabel = "desde el mes pasado",
-    subtext = "Este mes",
-    variant,
-    ...props
-  }, ref) => {
+  (
+    {
+      amount,
+      changePercent,
+      changeLabel = "desde el mes pasado",
+      subtext = "Este mes",
+      variant,
+      ...props
+    },
+    ref
+  ) => {
     const colorVariant: Record<CardVariant, string> = {
       balance: "hsl(var(--balance))",
       income: "hsl(var(--income))",
@@ -45,7 +48,7 @@ export const BalanceCardContent = React.forwardRef<
     };
 
     return (
-      <div className="flex flex-col gap-2" {...props}>
+      <div ref={ref} className="flex flex-col gap-2" {...props}>
         <h3
           className={cn("text-3xl font-bold leading-none")}
           style={colorStyle}

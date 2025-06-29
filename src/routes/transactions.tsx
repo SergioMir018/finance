@@ -1,17 +1,41 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowDown, Car, Plus, TrendingUp } from "lucide-react";
+import {
+  ArrowDown,
+  ChevronDown,
+  DollarSign,
+  Plus,
+  TrendingUp,
+} from "lucide-react";
 import { BalanceCardContent } from "~/components/balance-card-content";
 import { Button } from "~/components/button";
+import { Dropdown } from "~/components/dropdown";
 import { Label } from "~/components/label";
 import { PageHeader } from "~/components/page-header";
 import { PageHeaderTitle } from "~/components/page-header-title";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import { TransactionsTable } from "~/components/transactions-table";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
 
 export const Route = createFileRoute("/transactions")({
   component: RouteComponent,
 });
 
 const sample_number = 4;
+
+const sample_categories = [
+  "Todas las categorías",
+  "Alimentos",
+  "Transporte",
+  "Salud",
+  "Entretenimiento",
+  "Servicios",
+];
+const sample_types = ["Todas las transacciones", "Ingresos", "Gastos"];
 
 function RouteComponent() {
   return (
@@ -53,7 +77,7 @@ function RouteComponent() {
         <Card className="col-span-1">
           <CardHeader className="flex-row items-center justify-between">
             <CardTitle>Balance Neto</CardTitle>
-            <ArrowDown size={18} />
+            <DollarSign size={18} />
           </CardHeader>
           <CardContent>
             <BalanceCardContent
@@ -68,18 +92,36 @@ function RouteComponent() {
             <CardTitle>Filtros</CardTitle>
           </CardHeader>
           <CardContent className="grid grid-cols-5">
-            <div className="col-span-1">
+            <div className="col-span-1 flex flex-col gap-2 pr-5">
               <Label>Categoría</Label>
+              <Dropdown
+                data={sample_categories}
+                icon={<ChevronDown size={18} />}
+              />
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 flex flex-col gap-2 pr-5">
               <Label>Categoría</Label>
+              <Dropdown data={sample_types} icon={<ChevronDown size={18} />} />
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 flex flex-col gap-2 pr-5">
               <Label>Categoría</Label>
+              <Dropdown data={sample_types} icon={<ChevronDown size={18} />} />
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 flex flex-col gap-2 pr-5">
               <Label>Categoría</Label>
+              <Dropdown data={sample_types} icon={<ChevronDown size={18} />} />
             </div>
+          </CardContent>
+        </Card>
+        <Card className="col-span-3">
+          <CardHeader>
+            <CardTitle>Lista de Transacciones</CardTitle>
+            <CardDescription>
+              Mostrando "numero seleccionado" de "total"
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <TransactionsTable />
           </CardContent>
         </Card>
       </section>

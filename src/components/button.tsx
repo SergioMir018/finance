@@ -10,7 +10,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cn(
-          "flex gap-3 text-md font-semibold items-center justify-center p-2 rounded-[5px]",
+          "flex gap-3 text-md font-semibold items-center justify-center p-2 rounded-md",
           {
             "bg-white text-black hover:bg-white/90 transition-colors duration-150":
               variant === "primary",

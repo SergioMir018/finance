@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { useLocalStorage } from "~/hooks/useLocalStorage";
+import { useLocalStorage } from "~/hooks/use-localStorage";
 import { SidebarLink } from "./sidebar-link";
 
 const links: { text: string; icon: React.ReactNode; href: string }[] = [
@@ -108,7 +108,7 @@ export const Sidebar: React.FC = () => {
           Finanzas Personales
         </h1>
         <button
-          className="cursor-pointer w-10 h-10 bg-black hover:shadow-md hover:shadow-neutral-100/5 hover:bg-gradient-to-b from-neutral-950 to-black border-[1px] border-white/10 hover:border-white/20 transition-all duration-100 rounded-[8px] flex justify-center items-center absolute right-0"
+          className="cursor-pointer w-10 h-10 bg-black hover:shadow-md hover:shadow-neutral-100/5 hover:bg-gradient-to-b from-neutral-950 to-black border-[1px] border-white/10 hover:border-white/20 transition-all duration-100 rounded-md flex justify-center items-center absolute right-0"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <Ellipsis ref={iconRef} />

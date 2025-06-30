@@ -8,10 +8,11 @@ import {
 } from "~/components/ui/card";
 import { ArrowDown, DollarSign, PiggyBank, TrendingUp } from "lucide-react";
 import { BalanceCardContent } from "~/components/balance-card-content";
-import { ChartAreaGradient } from "~/components/chart-area-gradient";
-import { ChartPieLabel } from "~/components/chart-pie";
+import { ChartAreaGradient } from "~/components/dashboard/chart-area-gradient";
+import { ChartPieLabel } from "~/components/dashboard/chart-pie";
 import { Transaction } from "~/types/transactionTypes/transaction.type";
-import { DashboardTable } from "~/components/dashboard-table";
+import { DashboardTable } from "~/components/dashboard/dashboard-table";
+import { PageHeaderTitle } from "~/components/page-header-title";
 import { PageHeader } from "~/components/page-header";
 
 export const Route = createFileRoute("/")({
@@ -49,7 +50,9 @@ const transactions: Array<Transaction> = [
 function Home() {
   return (
     <>
-      <PageHeader>Resumen financiero</PageHeader>
+      <PageHeader>
+        <PageHeaderTitle>Resumen financiero</PageHeaderTitle>
+      </PageHeader>
       <section className="flex-1 grid grid-cols-12 gap-x-4 gap-y-8">
         <Card className="col-span-3">
           <CardHeader className="flex-row items-center justify-between">

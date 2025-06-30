@@ -84,7 +84,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
           {data.map((item) => (
             <div
               key={item}
-              className="p-2 hover:bg-card-highlight cursor-pointer"
+              className="m-2 rounded-md p-2 hover:bg-card-highlight cursor-pointer transition-colors duration-150"
               onClick={() => handleOptionClick(item)}
             >
               {item}

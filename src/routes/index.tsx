@@ -8,10 +8,10 @@ import {
 } from "~/components/ui/card";
 import { ArrowDown, DollarSign, PiggyBank, TrendingUp } from "lucide-react";
 import { BalanceCardContent } from "~/components/balance-card-content";
-import { ChartAreaGradient } from "~/components/chart-area-gradient";
-import { ChartPieLabel } from "~/components/chart-pie";
+import { ChartAreaGradient } from "~/components/dashboard/chart-area-gradient";
+import { ChartPieLabel } from "~/components/dashboard/chart-pie";
 import { Transaction } from "~/types/transactionTypes/transaction.type";
-import { DashboardTable } from "~/components/dashboard-table";
+import { DashboardTable } from "~/components/dashboard/dashboard-table";
 import { PageHeaderTitle } from "~/components/page-header-title";
 import { PageHeader } from "~/components/page-header";
 

@@ -8,12 +8,12 @@ import {
 } from "lucide-react";
 import { BalanceCardContent } from "~/components/balance-card-content";
 import { Button } from "~/components/button";
-import { DatePicker } from "~/components/date-picker";
+import { DatePicker } from "~/components/transactions/date-picker";
 import { Dropdown } from "~/components/dropdown";
 import { Label } from "~/components/label";
 import { PageHeader } from "~/components/page-header";
 import { PageHeaderTitle } from "~/components/page-header-title";
-import { TransactionsTable } from "~/components/transactions-table";
+import { TransactionsTable } from "~/components/transactions/transactions-table";
 import {
   Card,
   CardContent,

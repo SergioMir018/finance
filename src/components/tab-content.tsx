@@ -12,10 +12,6 @@ export const TabContent = React.forwardRef<HTMLDivElement, TabContentProps>(
 
     if (tabsValue != value) return null;
 
-    return (
-      <div ref={ref} className={cn("", className)} {...props}>
-        {value}
-      </div>
-    );
+    return <div ref={ref} className={cn("", className)} {...props} />;
   }
 );

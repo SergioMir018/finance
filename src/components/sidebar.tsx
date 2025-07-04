@@ -54,7 +54,7 @@ export const Sidebar: React.FC = () => {
           sidebar,
           {
             width: "72px",
-            duration: 0.1,
+            duration: 0.2,
             ease: "none",
           },
           "<"

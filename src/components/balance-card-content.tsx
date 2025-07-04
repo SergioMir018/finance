@@ -11,6 +11,13 @@ interface BalanceCardContentProps extends React.HTMLAttributes<HTMLDivElement> {
   variant: CardVariant;
 }
 
+const colorVariant: Record<CardVariant, string> = {
+  balance: "hsl(var(--balance))",
+  income: "hsl(var(--income))",
+  expense: "hsl(var(--expense))",
+  saving: "hsl(var(--saving))",
+};
+
 export const BalanceCardContent = React.forwardRef<
   HTMLDivElement,
   BalanceCardContentProps
@@ -26,13 +33,6 @@ export const BalanceCardContent = React.forwardRef<
     },
     ref
   ) => {
-    const colorVariant: Record<CardVariant, string> = {
-      balance: "hsl(var(--balance))",
-      income: "hsl(var(--income))",
-      expense: "hsl(var(--expense))",
-      saving: "hsl(var(--saving))",
-    };
-
     const colorStyle = { color: colorVariant[variant] };
     const formattedAmount = amount.toLocaleString(undefined, {
       style: "currency",

@@ -1,14 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUp, Plus, TrendingUp } from "lucide-react";
+import { ArrowUp, DollarSign, PiggyBank, Plus, TrendingUp } from "lucide-react";
 import { BalanceCardContent } from "~/components/balance-card-content";
 import { Button } from "~/components/button";
 import { PageHeader } from "~/components/page-header";
 import { PageHeaderTitle } from "~/components/page-header-title";
+import { ProgressBar } from "~/components/progress-bar";
 import { TabContent } from "~/components/tab-content";
 import { TabTrigger } from "~/components/tab-trigger";
 import { Tabs } from "~/components/tabs";
 import { TabsList } from "~/components/tabs-list";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
 
 export const Route = createFileRoute("/savings")({
   component: RouteComponent,
@@ -34,26 +42,34 @@ function RouteComponent() {
         <div className="grid grid-cols-3 gap-4">
           <Card className="col-span-1">
             <CardHeader className="flex-row items-center justify-between">
-              <CardTitle>Total Ingresos</CardTitle>
-              <TrendingUp size={18} />
+              <CardTitle>Total Ahorros</CardTitle>
+              <PiggyBank size={18} />
             </CardHeader>
             <CardContent>
-              <BalanceCardContent amount={1000} variant="saving" />
+              <BalanceCardContent
+                amount={1000}
+                variant="saving"
+                subtext="De 4 fondos"
+              />
+            </CardContent>
+          </Card>
+          <Card className="col-span-1">
+            <CardHeader className="flex-row items-center justify-between">
+              <CardTitle>Ahorro Mensual</CardTitle>
+              <TrendingUp size={18} />
+            </CardHeader>
+            <CardContent className="flex gap-2 relative">
+              <BalanceCardContent
+                amount={1000}
+                variant="saving"
+                subtext="Total ahorrado en el mes"
+              />
             </CardContent>
           </Card>
           <Card className="col-span-1">
             <CardHeader className="flex-row items-center justify-between">
               <CardTitle>Total Ingresos</CardTitle>
-              <TrendingUp size={18} />
-            </CardHeader>
-            <CardContent>
-              <BalanceCardContent amount={1000} variant="saving" />
-            </CardContent>
-          </Card>
-          <Card className="col-span-1">
-            <CardHeader className="flex-row items-center justify-between">
-              <CardTitle>Total Ingresos</CardTitle>
-              <TrendingUp size={18} />
+              <DollarSign size={18} />
             </CardHeader>
             <CardContent>
               <BalanceCardContent amount={1000} variant="saving" />

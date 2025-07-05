@@ -11,7 +11,7 @@ interface BalanceCardContentProps extends React.HTMLAttributes<HTMLDivElement> {
   variant: CardVariant;
 }
 
-const colorVariant: Record<CardVariant, string> = {
+export const colorVariant: Record<CardVariant, string> = {
   balance: "hsl(var(--balance))",
   income: "hsl(var(--income))",
   expense: "hsl(var(--expense))",
@@ -44,7 +44,7 @@ export const BalanceCardContent = React.forwardRef<
     const hasChange = variant === "balance" && changePercent !== undefined;
     const isPositive = changePercent! >= 0;
     const changeTextColorStyle = {
-      color: `${isPositive ? `hsl(var(--income))` : `hsl(var(--expense))`}`,
+      color: `${isPositive ? colorVariant["income"] : colorVariant["expense"]}`,
     };
 
     return (

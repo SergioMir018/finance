@@ -17,4 +17,4 @@ export const PageHeaderTitle = React.forwardRef<
   );
 });
 
-PageHeaderTitle.displayName = "PageHeader";
+PageHeaderTitle.displayName = "PageHeaderTitle";

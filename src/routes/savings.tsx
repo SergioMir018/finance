@@ -5,6 +5,7 @@ import { Button } from "~/components/button";
 import { PageHeader } from "~/components/page-header";
 import { PageHeaderTitle } from "~/components/page-header-title";
 import { ProgressBar } from "~/components/progress-bar";
+import { SavingsFondCard } from "~/components/savings/savings-fond";
 import { TabContent } from "~/components/tab-content";
 import { TabTrigger } from "~/components/tab-trigger";
 import { Tabs } from "~/components/tabs";
@@ -68,7 +69,7 @@ function RouteComponent() {
           </Card>
           <Card className="col-span-1">
             <CardHeader className="flex-row items-center justify-between">
-              <CardTitle>Total Ingresos</CardTitle>
+              <CardTitle>Promedio por fondo de ahorro</CardTitle>
               <DollarSign size={18} />
             </CardHeader>
             <CardContent>
@@ -83,18 +84,12 @@ function RouteComponent() {
             <TabTrigger value="movements">Moviemientos</TabTrigger>
           </TabsList>
           <TabContent value="accounts" className="grid grid-cols-2 gap-2">
-            <Card>
-              <CardHeader></CardHeader>
-            </Card>
-            <Card>
-              <CardHeader></CardHeader>
-            </Card>
-            <Card>
-              <CardHeader></CardHeader>
-            </Card>
-            <Card>
-              <CardHeader></CardHeader>
-            </Card>
+            <SavingsFondCard
+              title={"Fondo de Emergencias"}
+              balance={3700}
+              description={"Para gastos medicos y de emergencia"}
+              creationDate={"14/2/2023"}
+            />
           </TabContent>
           <TabContent value="goals">
             <Card>

@@ -27,3 +27,5 @@ export const TabTrigger = React.forwardRef<HTMLButtonElement, TabTriggerProps>(
     );
   }
 );
+
+TabTrigger.displayName = "TabTrigger";

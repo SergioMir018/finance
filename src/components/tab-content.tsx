@@ -15,3 +15,5 @@ export const TabContent = React.forwardRef<HTMLDivElement, TabContentProps>(
     return <div ref={ref} className={cn("", className)} {...props} />;
   }
 );
+
+TabContent.displayName = "TabContent";

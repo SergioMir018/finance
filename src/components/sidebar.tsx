@@ -27,7 +27,7 @@ const links: { text: string; icon: React.ReactNode; href: string }[] = [
   },
 ];
 
-export const Sidebar: React.FC = () => {
+export const Sidebar = () => {
   const [isOpen, setIsOpen] = useLocalStorage("isSidebarOpen", true);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);

@@ -24,8 +24,6 @@ export const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
       }
 
       setCurrentProgress(progress);
-
-      console.log(currentProgress);
     }, [value, maxValue]);
 
     return (

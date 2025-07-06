@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Transaction } from "~/types/transactionTypes/transaction.type";
 import {
   TableCaption,
@@ -18,7 +18,10 @@ interface DashboardTableProps {
 export const DashboardTable: React.FC<DashboardTableProps> = ({
   transactions,
 }) => {
-  const total = transactions.reduce((acc, curr) => acc + curr.amount, 0);
+  const total = useCallback(
+    () => transactions.reduce((acc, curr) => acc + curr.amount, 0),
+    [transactions]
+  );
 
   return (
     <Table>
@@ -31,22 +34,27 @@ export const DashboardTable: React.FC<DashboardTableProps> = ({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {transactions.map((transaction, index) => (
-          <TableRow key={`${transaction.description}-${index}`}>
-            <TableCell className="font-medium">
-              {transaction.description}
-            </TableCell>
-            <TableCell>{transaction.category}</TableCell>
-            <TableCell className="text-right">
-              ${transaction.amount.toFixed(2)}
-            </TableCell>
-          </TableRow>
-        ))}
+        {transactions.map((transaction, index) =>
+          useMemo(
+            () => (
+              <TableRow key={`${transaction.description}-${index}`}>
+                <TableCell className="font-medium">
+                  {transaction.description}
+                </TableCell>
+                <TableCell>{transaction.category}</TableCell>
+                <TableCell className="text-right">
+                  ${transaction.amount.toFixed(2)}
+                </TableCell>
+              </TableRow>
+            ),
+            [transaction]
+          )
+        )}
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell colSpan={2 as number}>Total</TableCell>
-          <TableCell className="text-right">${total.toFixed(2)}</TableCell>
+          <TableCell className="text-right">${total().toFixed(2)}</TableCell>
         </TableRow>
       </TableFooter>
     </Table>

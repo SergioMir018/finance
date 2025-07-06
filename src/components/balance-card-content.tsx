@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import { cn } from "~/lib/utils";
 import { CardVariant } from "~/types/cardTypes/cardContentVariant";
+import { formatMoney } from "~/utils/format-money";
 
 interface BalanceCardContentProps extends React.HTMLAttributes<HTMLDivElement> {
   amount: number;
@@ -34,12 +35,7 @@ export const BalanceCardContent = React.forwardRef<
     ref
   ) => {
     const colorStyle = { color: colorVariant[variant] };
-    const formattedAmount = amount.toLocaleString(undefined, {
-      style: "currency",
-      currency: "USD",
-      currencyDisplay: "narrowSymbol",
-      maximumFractionDigits: 0,
-    });
+    const formattedAmount = useCallback(() => formatMoney(amount), [amount]);
 
     const hasChange = variant === "balance" && changePercent !== undefined;
     const isPositive = changePercent! >= 0;
@@ -53,7 +49,7 @@ export const BalanceCardContent = React.forwardRef<
           className={cn("text-3xl font-bold leading-none")}
           style={colorStyle}
         >
-          {formattedAmount}
+          {formattedAmount()}
         </h3>
         {hasChange ? (
           <div className="flex flex-col">

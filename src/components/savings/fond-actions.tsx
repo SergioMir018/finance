@@ -58,7 +58,7 @@ export const FondActions = React.forwardRef<
       >
         <Ellipsis size={18} />
       </button>
-      <Card ref={optionsRef} className="absolute right-0 mt-1 hidden py-3 px-2">
+      <Card ref={optionsRef} className="absolute right-0 mt-1 hidden pt-2 pb-1 px-1">
         <CardHeader className="px-2 !pb-2 !pt-1">
           <CardTitle>Acciones</CardTitle>
         </CardHeader>

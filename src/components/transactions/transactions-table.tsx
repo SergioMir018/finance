@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Transaction } from "~/types/transactionTypes/transaction.type";
 import {
   TableCaption,
@@ -7,7 +7,6 @@ import {
   TableHead,
   TableBody,
   TableCell,
-  TableFooter,
   Table,
 } from "~/components/ui/table";
 
@@ -34,17 +33,22 @@ export const TransactionsTable = React.forwardRef<
         </TableRow>
       </TableHeader>
       <TableBody>
-        {transactions?.map((transaction, index) => (
-          <TableRow key={`${transaction.description}-${index}`}>
-            <TableCell className="font-medium">
-              {transaction.description}
-            </TableCell>
-            <TableCell>{transaction.category}</TableCell>
-            <TableCell className="text-right">
-              ${transaction.amount.toFixed(2)}
-            </TableCell>
-          </TableRow>
-        ))}
+        {transactions?.map((transaction, index) =>
+          useMemo(
+            () => (
+              <TableRow key={`${transaction.description}-${index}`}>
+                <TableCell className="font-medium">
+                  {transaction.description}
+                </TableCell>
+                <TableCell>{transaction.category}</TableCell>
+                <TableCell className="text-right">
+                  ${transaction.amount.toFixed(2)}
+                </TableCell>
+              </TableRow>
+            ),
+            [transaction]
+          )
+        )}
       </TableBody>
     </Table>
   );

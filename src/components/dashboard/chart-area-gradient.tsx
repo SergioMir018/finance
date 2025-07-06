@@ -14,8 +14,6 @@ import {
   ChartTooltipContent,
 } from "~/components/ui/chart";
 
-export const description = "An area chart with gradient fill";
-
 const rawData = [
   { month: "Enero", income: 186, expenses: 80 },
   { month: "Febrero", income: 305, expenses: 200 },

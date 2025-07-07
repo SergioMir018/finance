@@ -1,5 +1,5 @@
+import React, { useMemo } from "react";
 import { Area, AreaChart, CartesianGrid, Line, XAxis } from "recharts";
-
 import {
   Card,
   CardContent,
@@ -43,7 +43,9 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ChartAreaGradient() {
+export const ChartAreaGradient = React.memo(function ChartAreaGradient() {
+  const memoTooltipContent = useMemo(() => <ChartTooltipContent />, []);
+
   return (
     <Card className="col-span-7">
       <CardHeader>
@@ -54,73 +56,78 @@ export function ChartAreaGradient() {
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <AreaChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => String(value).slice(0, 3)}
-            />
-            <ChartTooltip cursor={true} content={<ChartTooltipContent />} />
-            <defs>
-              <linearGradient id="fillIncome" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-income)"
-                  stopOpacity={0.8}
+          {React.useMemo(
+            () => (
+              <AreaChart
+                accessibilityLayer
+                data={chartData}
+                margin={{
+                  left: 12,
+                  right: 12,
+                }}
+              >
+                <CartesianGrid vertical={false} />
+                <XAxis
+                  dataKey="month"
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}
+                  tickFormatter={(value) => String(value).slice(0, 3)}
                 />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-income)"
-                  stopOpacity={0.1}
+                <ChartTooltip cursor={true} content={memoTooltipContent} />
+                <defs>
+                  <linearGradient id="fillIncome" x1="0" y1="0" x2="0" y2="1">
+                    <stop
+                      offset="5%"
+                      stopColor="var(--color-income)"
+                      stopOpacity={0.8}
+                    />
+                    <stop
+                      offset="95%"
+                      stopColor="var(--color-income)"
+                      stopOpacity={0.1}
+                    />
+                  </linearGradient>
+                  <linearGradient id="fillExpenses" x1="0" y1="0" x2="0" y2="1">
+                    <stop
+                      offset="5%"
+                      stopColor="var(--color-expenses)"
+                      stopOpacity={0.8}
+                    />
+                    <stop
+                      offset="95%"
+                      stopColor="var(--color-expenses)"
+                      stopOpacity={0.1}
+                    />
+                  </linearGradient>
+                </defs>
+                <Area
+                  dataKey="expenses"
+                  type="natural"
+                  fill="url(#fillExpenses)"
+                  fillOpacity={0.4}
+                  stroke="var(--color-expenses)"
                 />
-              </linearGradient>
-              <linearGradient id="fillExpenses" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-expenses)"
-                  stopOpacity={0.8}
+                <Area
+                  dataKey="income"
+                  type="natural"
+                  fill="url(#fillIncome)"
+                  fillOpacity={0.4}
+                  stroke="var(--color-income)"
                 />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-expenses)"
-                  stopOpacity={0.1}
+                <Line
+                  dataKey="balance"
+                  stroke="hsl(var(--saving))"
+                  strokeWidth={2}
+                  dot={{ r: 3 }}
+                  type="monotone"
                 />
-              </linearGradient>
-            </defs>
-            <Area
-              dataKey="expenses"
-              type="natural"
-              fill="url(#fillExpenses)"
-              fillOpacity={0.4}
-              stroke="var(--color-expenses)"
-            />
-            <Area
-              dataKey="income"
-              type="natural"
-              fill="url(#fillIncome)"
-              fillOpacity={0.4}
-              stroke="var(--color-income)"
-            />
-            <Line
-              dataKey="balance"
-              stroke="hsl(var(--saving))"
-              strokeWidth={2}
-              dot={{ r: 3 }}
-              type="monotone"
-            />
-          </AreaChart>
+              </AreaChart>
+            ),
+            [chartData]
+          )}
         </ChartContainer>
       </CardContent>
     </Card>
   );
-}
+});

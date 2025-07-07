@@ -5,7 +5,8 @@ import { Button } from "~/components/button";
 import { PageHeader } from "~/components/page-header";
 import { PageHeaderTitle } from "~/components/page-header-title";
 import { ProgressBar } from "~/components/progress-bar";
-import { SavingsFondCard } from "~/components/savings/savings-fond";
+import { SavingGoalCard } from "~/components/savings/saving-goal-card";
+import { SavingsFondCard } from "~/components/savings/savings-fond-card";
 import { TabContent } from "~/components/tab-content";
 import { TabTrigger } from "~/components/tab-trigger";
 import { Tabs } from "~/components/tabs";
@@ -91,12 +92,14 @@ function RouteComponent() {
               creationDate={"14/2/2023"}
             />
           </TabContent>
-          <TabContent value="goals">
-            <Card>
-              <CardHeader></CardHeader>
-            </Card>
+          <TabContent value="goals" className="grid grid-cols-2 gap-2">
+            <SavingGoalCard
+              title={"Fondo de Emergencias"}
+              currentBalance={3700}
+              goal={7000}
+            />
           </TabContent>
-          <TabContent value="movements">
+          <TabContent value="movements" className="grid grid-cols-2 gap-2">
             <Card>
               <CardHeader></CardHeader>
             </Card>

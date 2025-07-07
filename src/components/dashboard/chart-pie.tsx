@@ -1,5 +1,5 @@
+import React from "react";
 import { Pie, PieChart } from "recharts";
-
 import {
   Card,
   CardContent,
@@ -48,7 +48,17 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ChartPieLabel() {
+export const ChartPieLabel = React.memo(function ChartPieLabel() {
+  const chartTooltipContent = React.useMemo(
+    () => <ChartTooltipContent hideLabel />,
+    []
+  );
+
+  const pie = React.useMemo(
+    () => <Pie data={chartData} dataKey="visitors" label nameKey="browser" />,
+    [chartData]
+  );
+
   return (
     <Card className="flex flex-col col-span-5">
       <CardHeader className="items-center pb-0">
@@ -61,11 +71,11 @@ export function ChartPieLabel() {
           className="[&_.recharts-pie-label-text]:fill-foreground mx-auto aspect-square h-[600px] pb-0"
         >
           <PieChart>
-            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-            <Pie data={chartData} dataKey="visitors" label nameKey="browser" />
+            <ChartTooltip content={chartTooltipContent} />
+            {pie}
           </PieChart>
         </ChartContainer>
       </CardContent>
     </Card>
   );
-}
+});

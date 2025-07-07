@@ -27,19 +27,17 @@ export const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
     }, [value, maxValue]);
 
     return (
-      <div ref={ref} className={cn("w-full", className)} {...props}>
-        <div className="flex-1 h-full relative">
-          <div
-            className={cn("rounded-[3px] h-full")}
-            style={{
-              background: colorVariant[stage],
-              width: `${currentProgress}%`,
-            }}
-          ></div>
-          <span className="text-sm absolute right-2 top-1/2 -translate-y-1/2 leading-none text-gray-400">
-            de {maxValue}
-          </span>
-        </div>
+      <div ref={ref} className={cn("w-full bg-black/50 relative rounded-[3px]")} {...props}>
+        <div
+          className={cn("rounded-[3px] h-full mb-2", className)}
+          style={{
+            background: colorVariant[stage],
+            width: `${currentProgress}%`,
+          }}
+        />
+        <span className="text-sm absolute right-0 leading-none text-gray-400">
+          de {maxValue}
+        </span>
       </div>
     );
   }

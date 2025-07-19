@@ -9,3 +9,5 @@ export const PageHeader = React.forwardRef<
     <header className={cn("flex pt-4 pb-10", className)} {...props} ref={ref} />
   );
 });
+
+PageHeader.displayName = "PageHeader";
